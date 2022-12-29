@@ -7,6 +7,7 @@ $proxies = Get-Content $proxyFile
 
 # Set the initial visit count to 0
 $visitCount = 0
+$failedCount = 0
 
 # Set an infinite loop to send requests to the website every 5 seconds
 while ($true) {
@@ -18,19 +19,28 @@ while ($true) {
   $request.Proxy = New-Object System.Net.WebProxy($proxy)
 
   # Send the request and get the response
-  $response = $request.GetResponse()
+  try {
+    $response = $request.GetResponse()
 
-  # Increment the visit count if the request was successful (status code 200)
-  if ($response.StatusCode -eq 200) {
-    $visitCount++
-    Write-Host "OK - Visit Count $visitCount"
-  }
-  else {
-    Write-Host "Failed - Visit Count $visitCount"
-  }
+    # Increment the visit count if the request was successful (status code 200)
+    if ($response.StatusCode -eq 200) {
+      $visitCount++
+      $currentTime = Get-Date -Format "HH:mm:ss"
+      Write-Host "OK - Visit Count $visitCount - Time: $currentTime"
+    }
+    else {
+      $currentTime = Get-Date -Format "HH:mm:ss"
+      Write-Host "Failed - Visit Count $visitCount - Time: $currentTime"
+    }
 
-  # Close the response stream
-  $response.Close()
+    # Close the response stream
+    $response.Close()
+  } catch {
+    # Increment the failed count if the request failed
+    $failedCount++
+    $currentTime = Get-Date -Format "HH:mm:ss"
+    Write-Host "Failed to connect using proxy $proxy - Failed Count $failedCount - Time: $currentTime"
+  }
 
   # Wait for 5 seconds before sending the next request
   Start-Sleep -Seconds 5
