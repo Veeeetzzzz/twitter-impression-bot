@@ -29,6 +29,10 @@ The script will run continuously, sending requests to the target website every 5
     OK - Visit Count 2 - Time: 10:30:55
     Failed to connect using proxy 198.51.100.15:3128 - Failed Count 2 - Time: 10:31:0
       
+## Known bugs/issues
+
+Visit count accuracy will be determined by two things - quality of proxies and if you're logged in as a user or not. This script uses a basic GET request, so it won't pick up your credentials.. Adjust accordingly.
+      
 ## License
 
 This project is available under the MIT License - https://opensource.org/license/mit/
