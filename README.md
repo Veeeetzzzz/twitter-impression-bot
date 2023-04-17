@@ -1,4 +1,5 @@
 ## PowerShell Web Request Automator
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
 This PowerShell script automates the process of sending requests to a target website using a list of proxies. It repeatedly sends requests to the specified website using a randomly selected proxy from the provided list, and logs the successful and failed visits.
 
