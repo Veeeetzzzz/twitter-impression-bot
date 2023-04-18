@@ -34,12 +34,6 @@ The script will run continuously, sending requests to the target website every 5
 
 Visit count accuracy will be determined by two things - quality of proxies and if you're logged in as a user or not. This script uses a basic GET request, so it won't pick up your credentials.. Adjust accordingly.
       
-## License
-
-This project is available under the MIT License - https://opensource.org/license/mit/
-      
-TL;DR: Do whatever you'd like with this code, I take no repsonsibility for any damage caused by this code and everything you see here is provided as-is.
-      
 ## Disclaimer
 
 Please use this script responsibly and in compliance with the target website's terms of service. Sending automated requests might be against the terms of service of certain websites, and the use of proxies might be prohibited as well. The author of this script is not responsible for any damages or legal consequences resulting from its usage.
